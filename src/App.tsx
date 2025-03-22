@@ -23,7 +23,7 @@ function App() {
 
   return (
     <>
-      <div className='flex justify-center gap-[50vw]'>
+      <div className='scroll-container flex justify-center gap-[50vw]'>
         <p className='font-bold text-lg'>TaskPro</p>
         <nav className='flex items-center'>
           <Link className="mr-5" to="/">Tasks</Link>
