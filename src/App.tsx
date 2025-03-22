@@ -5,6 +5,7 @@ import './App.css'
 // import { useAppSelector } from './redux/hook';
 // import { Button } from "@/components/ui/button"
 import { Link, Outlet } from 'react-router-dom';
+import { ModeToggle } from './routes/mode-toggle';
 
 function App() {
 
@@ -23,15 +24,18 @@ function App() {
   return (
     <>
       <div className='flex justify-center gap-[50vw]'>
-        <p className='font-bold'>TaskPro</p>
-        <nav>
-          <Link className='bg-red-100 mr-5 p-1 rounded-sm' to="/">Tasks</Link>
-          <Link className='bg-red-100 mr-5 p-1 rounded-sm' to="/users">Users</Link>
-          <Link className='bg-red-100 mr-5 p-1 rounded-sm' to="/login">Login</Link>
+        <p className='font-bold text-lg'>TaskPro</p>
+        <nav className='flex items-center'>
+          <Link className="mr-5" to="/">Tasks</Link>
+          <Link className="mr-5" to="/users">Users</Link>
+          <Link className="mr-5" to="/login">Login</Link>
+          
+          <ModeToggle/>
+       
         </nav>
+        
       </div>
-
-
+      
       <Outlet/>
     </>
   )

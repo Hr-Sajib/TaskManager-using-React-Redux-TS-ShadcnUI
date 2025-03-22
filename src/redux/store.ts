@@ -1,12 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
 import counterReducer from "./features/counter/counterSlice"
-import logger from "./middlewares/logger";
+import taskReducer from "./features/task/taskSlice"
 
 export const store = configureStore({
     reducer: {
         counter: counterReducer,
-    },
-    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger), 
+        task: taskReducer,
+    }, 
     
     devTools: {
         name: "Vite+React+TS",
