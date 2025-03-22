@@ -1,6 +1,7 @@
 import { selectTasks } from "@/redux/features/task/taskSlice";
 import { useAppSelector } from "@/redux/hook";
 import TaskCart from "@/module/taskCart";
+import { AddTaskModal } from "@/module/AddTaskModal";
 
 const Tasks = () => {
 
@@ -13,10 +14,15 @@ const Tasks = () => {
 
 
     return (
-        <div className=" mt-10 ">
-            {
-                tasks.map(task => <TaskCart task={task}/>)
-            }
+        <div>
+            <div className=" mt-10 ">
+                {
+                    tasks.map(task => <TaskCart key={task.id} task={task}/>)
+                }
+            </div>
+            <div>
+                <AddTaskModal/>
+            </div>
         </div>
     );
 };
