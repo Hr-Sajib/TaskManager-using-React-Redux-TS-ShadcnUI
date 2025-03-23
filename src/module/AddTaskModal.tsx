@@ -43,7 +43,7 @@ export function AddTaskModal() {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant="outline" className="mt-5 w-[15vw] h-32">
+        <Button variant="outline" className="">
           Add Task
         </Button>
       </DialogTrigger>
