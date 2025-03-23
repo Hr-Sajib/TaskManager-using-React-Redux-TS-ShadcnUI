@@ -1,21 +1,24 @@
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { toggleCompleteState } from "@/redux/features/task/taskSlice";
+import { useAppDispatch } from "@/redux/hook";
 import { ITask } from "@/types/types";
 
 interface IProps {
     task: ITask
 }
 
-const TaskCart = ({task}: IProps) => {
+const TaskCard = ({task}: IProps) => {
+
+    const dispatch = useAppDispatch();
 
 
-
-// console.log(task)
 
 
     return (
         <div className="mb-2 border w-[40vw] text-left border-gray-300 p-5 rounded-sm">
             <p className="text-lg"><b>{task.title}</b></p> <br />
+            <p className="text-gray-400">{task.id}</p> <br />
             <p>{task.description}</p> <br />
             <div className="text-gray-400">
                 <p>{(task.isCompleted)? "Completed" : "Not Completed"}</p>
@@ -27,9 +30,9 @@ const TaskCart = ({task}: IProps) => {
                 <p>{task.dueDate}</p>
             </div>
             <br />
-            <Button>Done</Button>
+            <Button onClick={()=>dispatch(toggleCompleteState(task.id))}>{(!task.isCompleted ? "Done": "Undo")}</Button>
         </div>
     );
 };
 
-export default TaskCart;
+export default TaskCard;

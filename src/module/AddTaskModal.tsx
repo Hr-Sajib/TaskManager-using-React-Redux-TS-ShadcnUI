@@ -22,23 +22,19 @@ import { ITask } from "@/types/types";
 import { useAppDispatch } from "@/redux/hook";
 import { addTask } from "@/redux/features/task/taskSlice";
 
+
+
 export function AddTaskModal() {
 
-  const form = useForm();
+  const form = useForm<ITask>();
+
   const dispatch = useAppDispatch();
 
   const onSubmit = (data : ITask) => {
-    // console.log(data)
+
+    console.log(data)
+
     dispatch(addTask(data))
-    // Convert dueDate from Date to string (e.g., "2025-03-25")
-    // const formattedData = {
-    //   ...data,
-    //   id: `task-${Date.now()}`, // Add unique ID since ITask requires it
-    //   dueDate: data.dueDate ? format(new Date(data.dueDate), "yyyy-MM-dd") : "", // Format Date to string
-    //   isCompleted: false, // Default value since ITask requires it
-    // };
-    // console.log(formattedData);
-    // dispatch(addTask(formattedData));
     
   };
 

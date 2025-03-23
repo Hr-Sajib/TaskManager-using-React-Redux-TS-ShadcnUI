@@ -1,7 +1,7 @@
 import { selectTasks } from "@/redux/features/task/taskSlice";
 import { useAppSelector } from "@/redux/hook";
 import { AddTaskModal } from "@/module/AddTaskModal";
-import TaskCart from "@/module/TaskCart";
+import TaskCart from "@/module/TaskCard";
 
 const Tasks = () => {
 
