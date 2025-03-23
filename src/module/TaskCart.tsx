@@ -6,11 +6,11 @@ interface IProps {
     task: ITask
 }
 
-const taskCart = ({task}: IProps) => {
+const TaskCart = ({task}: IProps) => {
 
 
 
-console.log(task)
+// console.log(task)
 
 
     return (
@@ -32,4 +32,4 @@ console.log(task)
     );
 };
 
-export default taskCart;
+export default TaskCart;

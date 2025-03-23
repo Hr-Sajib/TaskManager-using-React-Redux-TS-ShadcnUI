@@ -1,30 +1,22 @@
 import './App.css'
-// import { useDispatch } from 'react-redux'
-// import { decrement, increment } from './redux/features/counter/counterSlice'
-// import { AppDispath } from './redux/store'
-// import { useAppSelector } from './redux/hook';
-// import { Button } from "@/components/ui/button"
 import { Link, Outlet } from 'react-router-dom';
-import { ModeToggle } from './routes/mode-toggle';
-
+import { ModeToggle } from './components/ui/mode-toggle';
+import { useTheme } from "@/providers/theme-provider";
+import { cn } from './lib/utils';
 function App() {
 
-  // const dispatch : AppDispath = useDispatch();
-  // const count = useAppSelector((state) => state.counter.count);
-   
-  // const handleIncrement = (amount:number) => {
-  //   dispatch(increment(amount))
-  // }
-  // const handleDecrement = () => {
-  //   dispatch(decrement())
-  // }
 
-  // console.log(count)
-
+  const {theme} = useTheme()
+  
   return (
-    <>
-      <div className='scroll-container flex justify-center gap-[50vw]'>
-        <p className='font-bold text-lg'>TaskPro</p>
+    <div className='overflow-hidden'>
+      <div className={cn(
+        "scroll-container flex justify-center gap-[50vw] fixed top-0 left-0 right-0 mx-auto p-4 z-10",
+                {
+                    "text-black bg-white": theme == "light",
+                    "text-white bg-black": theme == "dark",
+                })}>
+        <p className='font-bold text-2xl'>TaskPro</p>
         <nav className='flex items-center'>
           <Link className="mr-5" to="/">Tasks</Link>
           <Link className="mr-5" to="/users">Users</Link>
@@ -36,8 +28,10 @@ function App() {
         
       </div>
       
-      <Outlet/>
-    </>
+      <div className='flex-1 pt-16 overflow-y-auto'>
+        <Outlet/>
+      </div>
+    </div>
   )
 }
 
