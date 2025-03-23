@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { toggleCompleteState } from "@/redux/features/task/taskSlice";
+import { deleteTask, toggleCompleteState } from "@/redux/features/task/taskSlice";
 import { useAppDispatch } from "@/redux/hook";
 import { ITask } from "@/types/types";
 
@@ -30,7 +30,10 @@ const TaskCard = ({task}: IProps) => {
                 <p>{task.dueDate}</p>
             </div>
             <br />
-            <Button onClick={()=>dispatch(toggleCompleteState(task.id))}>{(!task.isCompleted ? "Done": "Undo")}</Button>
+            <div className="flex justify-between">
+                <Button onClick={()=>dispatch(toggleCompleteState(task.id))}>{(!task.isCompleted ? "Done": "Undo")}</Button>
+                <Button className="bg-red-200 text-black" onClick={()=>dispatch(deleteTask(task.id))}>Delete</Button>
+            </div>
         </div>
     );
 };

@@ -16,7 +16,7 @@ const initialState : InitialState = {
           "title": "Finish Project Proposal",
           "description": "Draft and finalize the project proposal for the client meeting, including budget and timeline.",
           "dueDate": "2025-03-25",
-          "isCompleted": false,
+          "isCompleted": true,
           "priority": "high"
         }
       ],
@@ -37,6 +37,9 @@ const taskSlice = createSlice({
       toggleCompleteState : (state, action: PayloadAction<string>) => {
         state.tasks.forEach((task) => task.id == action.payload ? task.isCompleted = !task.isCompleted : null)
       },
+      deleteTask : (state, action: PayloadAction<string>) => {
+        state.tasks = state.tasks.filter((task) => task.id !== action.payload)
+      },
       
       
     }
@@ -50,5 +53,5 @@ export const selectTasksFilter = (state : RootState) => {
     return state.taskR.filter
 }
 
-export const {addTask, toggleCompleteState} = taskSlice.actions;
+export const {addTask, toggleCompleteState, deleteTask} = taskSlice.actions;
 export default taskSlice.reducer; 
