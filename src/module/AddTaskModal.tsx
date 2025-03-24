@@ -22,29 +22,30 @@ import { ITask } from "@/types/types";
 import { useAppDispatch, useAppSelector } from "@/redux/hook";
 import { addTask } from "@/redux/features/task/taskSlice";
 import { selectUsers } from "@/redux/features/user/userSlice";
+import { useState } from "react";
 
 
 
 export function AddTaskModal() {
 
   const form = useForm<ITask>();
+  const [open, setOpen] = useState(false);
 
   const dispatch = useAppDispatch();
   const users = useAppSelector(selectUsers);
 
 
   const onSubmit = (data : ITask) => {
-
-    console.log(data)
-
     dispatch(addTask(data))
+    setOpen(false)
+    form.reset();
     
   };
 
   
 
   return (
-    <Dialog>
+    <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
         <Button variant="outline" className="">
           Add Task
@@ -159,7 +160,7 @@ export function AddTaskModal() {
                 render={({ field }) => (
                     <FormItem>
                       <FormLabel>Assign To</FormLabel>
-                      <Select  onValueChange={field.onChange} defaultValue={field.value}>
+                      <Select  onValueChange={field.onChange} defaultValue={field.value ?? undefined}>
                         <FormControl>
                           <SelectTrigger>
                             <SelectValue placeholder="Select User" />
@@ -167,7 +168,7 @@ export function AddTaskModal() {
                         </FormControl>
                         <SelectContent>
                          {
-                          users.map((user)=><SelectItem key={user.id} value={user.name}>{user.name}</SelectItem>)
+                          users.map((user)=><SelectItem key={user.id} value={user.id}>{user.name}</SelectItem>)
                          }
                         </SelectContent>
                       </Select>

@@ -27,7 +27,7 @@ const TaskCard = ({task}: IProps) => {
                     "text-red-400": task.priority == "high",
                 })}>{task.priority} priority</p>
                 <p>{task.dueDate}</p>
-                <p>Assigned To {task.assignTo}</p>
+                <p>Assigned To {(task.assignTo)? `${task.assignTo}`:"No One"}</p>
             </div>
             <br />
             <div className="flex justify-between">

@@ -14,6 +14,7 @@ import { useForm } from "react-hook-form";
 import { IUser } from "@/types/types";
 import { useAppDispatch } from "@/redux/hook";
 import { addUser } from "@/redux/features/user/userSlice";
+import { useState } from "react";
 
 
 
@@ -21,17 +22,20 @@ import { addUser } from "@/redux/features/user/userSlice";
 export function AddUserModal() {
 
   const form = useForm<IUser>();
+  const [open, setOpen] = useState(false);
 
   const dispatch = useAppDispatch();
 
   const onSubmit = (data : IUser) => {
     dispatch(addUser(data))
+    setOpen(false)
+    form.reset();
   };
 
   
 
   return (
-    <Dialog>
+    <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
         <Button variant="outline" className="">
           Add User
