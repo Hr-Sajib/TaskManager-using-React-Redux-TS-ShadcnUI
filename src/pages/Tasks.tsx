@@ -2,7 +2,7 @@ import { selectTasks, updateFilter } from "@/redux/features/task/taskSlice";
 import { useAppDispatch, useAppSelector } from "@/redux/hook";
 import { AddTaskModal } from "@/module/AddTaskModal";
 import TaskCart from "@/module/TaskCard";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const Tasks = () => {
 

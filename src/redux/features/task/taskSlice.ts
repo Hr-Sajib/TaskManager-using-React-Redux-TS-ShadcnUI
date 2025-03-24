@@ -17,7 +17,8 @@ const initialState : InitialState = {
           "description": "Draft and finalize the project proposal for the client meeting, including budget and timeline.",
           "dueDate": "2025-03-25",
           "isCompleted": true,
-          "priority": "high"
+          "priority": "high",
+          "assignTo":"Sajib"
         }
       ],
     filter:"all"
